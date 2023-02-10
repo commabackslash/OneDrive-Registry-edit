@@ -1,5 +1,7 @@
-# OneDrive-Registry-edit
+# Deployment scripts
 
-For disabling the personal onedrive from windows explorer without the need of manually modifying the registry
+DONE:
+- Onedrive registry editor, to remove the default onedrive from windows explorer to not confuse users.
+- Building blocks installer, to allow users to access company headers and footers for company documents.
 
 Sensitive information has been removed.
