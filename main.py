@@ -3,6 +3,7 @@
 import os
 import shutil
 import winreg
+import time
 
 version = 1.0
 global registry_mod_path
@@ -29,9 +30,9 @@ print("_" * 20)
 print("")
 
 # [] Registry modifications
-OneDriveKey = ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace\\{018D5C66-4533-4307-9B53-224DE2ED1FE6}") 
-OneDriveCompanyKey = ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace\\{04271989-C4D2-DADF-5567-307CA29F86E9}")
-CLSID_Key = ("CLSID\\{018D5C66-4533-4307-9B53-224DE2ED1FE6}")
+OneDriveKey = (R"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}") 
+OneDriveCompanyKey = (R"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{04271989-C4D2-DADF-5567-307CA29F86E9}")
+CLSID_Key = (R"CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}")
 
 OneDriveRegistryKey = winreg.OpenKey(winreg.HKEY_CURRENT_USER, OneDriveKey, 0, winreg.KEY_READ)
 OneDriveCompanyRegistryKey = winreg.OpenKey(winreg.HKEY_CURRENT_USER, OneDriveCompanyKey, 0, winreg.KEY_READ)
@@ -78,4 +79,4 @@ if reg_success == 2:
         print("[*] Restart the PC to ensure changes, then confirm the changes were made.")
         exit()
 
-os.wait()
+time.sleep(10)
