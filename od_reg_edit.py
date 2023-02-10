@@ -1,4 +1,5 @@
-# Script for the one drive registry  edit
+# Script for the one drive registry edit. All rights reserved.
+
 #packages
 import os
 import shutil
@@ -17,7 +18,7 @@ print("")
 print("_" * 20)
 print("")
 
-print("[*] Deployment v" + str(version))
+print("[*] Registry Edit Deployment v" + str(version))
 
 
 # [] Grabbing user information
