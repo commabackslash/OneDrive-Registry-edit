@@ -13,16 +13,15 @@ version = 1.0
 global registry_mod_path
 reg_success = 0
 
+CompanyOneDrive = ("Onedrive name as appears in explorer/registry") #change this
+
 with open(r"includes\banner.txt") as f:
     banner = f.read()
     print(banner)
 
-print("")
-print("_" * 20)
-print("")
 
+print("_" * 20 + "\n")
 print("[*] Registry Edit Deployment v" + str(version))
-
 
 # [] Grabbing user information
 device_username = str(os.getlogin())
@@ -56,7 +55,7 @@ else:
 
     print("Registry Error while detecting default OneDrive folder. Ensure the key value is {018D5C66-4533-4307-9B53-224DE2ED1FE6} manually")
 
-if OneDriveCompanyRegistryKeyValue == ("REPLACE THIS WITH COMPANY ONEDRIVE REGISTRY NAME"):
+if OneDriveCompanyRegistryKeyValue == (CompanyOneDrive):
 
     reg_success = reg_success + 1
     print("[*] Detected Company OneDrive folder....")
@@ -71,8 +70,13 @@ if reg_success == 2:
 
     winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, CLSID_Key)
     CLSID_RegistryKey = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, CLSID_Key, 0, winreg.KEY_READ)
-    winreg.SetValueEx(CLSID_RegistryKey, "System.IsPinnedToNameSpaceTree", 0, winreg.REG_SZ, "0")
-    winreg.CloseKey
+
+    try:
+        winreg.SetValueEx(CLSID_RegistryKey, "System.IsPinnedToNameSpaceTree", 0, winreg.REG_SZ, "0")
+        winreg.CloseKey
+
+    except PermissionError:
+        print("[*] Permission error, please run as administrator.")
 
     UpdatedCLSIDKey = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, CLSID_Key, 0, winreg.KEY_READ)
     UpdatedCLSIDKeyValue, regtype = winreg.QueryValueEx(UpdatedCLSIDKey, "System.IsPinnedToNameSpaceTree")
