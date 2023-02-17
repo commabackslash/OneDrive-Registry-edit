@@ -60,7 +60,11 @@ if success == 2:
 
     print("[*] All requirements met, adding building blocks.." + "\n " + "_" * 20 + "\n")
 
-    shutil.copy(R"includes\building_blocks.docx", user_directory + R"\AppData\Roaming\Microsoft\Document Building Blocks\1033\16")
+    try:
+        shutil.copy(R"includes\building_blocks.docx", user_directory + R"\AppData\Roaming\Microsoft\Document Building Blocks\1033\16")
+
+    except FileNotFoundError:
+        print("[*] Blocks file not found. check paths.")
 
     CheckFile(user_directory + R"\AppData\Roaming\Microsoft\Document Building Blocks\1033\16\building_blocks.docx", "Building blocks installed in the word directory")
 
