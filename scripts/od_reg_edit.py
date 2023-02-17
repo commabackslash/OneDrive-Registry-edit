@@ -1,5 +1,8 @@
 # Script for the one drive registry edit. All rights reserved.
 
+# note for dev; This is kinda scuffed because of permissions and requires further testing. 
+# windows error 5
+
 #packages
 import os
 import shutil
