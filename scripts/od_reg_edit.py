@@ -3,6 +3,9 @@
 # note for dev; This is kinda scuffed because of permissions and requires further testing. 
 # windows error 5
 
+#GET READY FOR DCOM ADJUSTMENT vvvv
+dcom_registry_path = (R'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole\AppCompat\ActivationSecurityCheckExemptionList')
+
 #packages
 import os
 import shutil
