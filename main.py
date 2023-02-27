@@ -12,10 +12,25 @@ print("_" * 20 + "\n" * 2)
 def ExecuteFile(exec_type, filename):
 
     if exec_type == "cmd":
-        os.system(filename)
+        try:
+
+            os.system(filename)
+        
+        except:
+
+            print(filename + " not found...")
 
     else: 
-        os.system("python3 " + filename)
+
+        try:
+
+            os.system("python3 " + filename)
+        
+        except FileNotFoundError:
+
+            print(filename + " not found...")
+
+    
 
 while True:
 
@@ -24,6 +39,7 @@ while True:
         print("Make a selection below vvv" + "\n")
         print("1. Registry Edits")
         print("2. Building Blocks Edit")
+        print("3. Full deployment")
 
         if menu == 1:
 
@@ -34,3 +50,6 @@ while True:
 
             print("Building Blocks edit in progress...")
             ExecuteFile("python3", R'scripts\building_blocks_edit.py')
+
+        if menu == 3:
+            ExecuteFile("cmd", R'scripts\run.bat')
