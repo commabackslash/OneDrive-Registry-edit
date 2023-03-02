@@ -10,27 +10,16 @@ exec_type = 0
 print("_" * 20 + "\n" * 2)
 
 def ExecuteFile(exec_type, filename):
-
     if exec_type == "cmd":
         try:
-
             os.system(filename)
-        
         except:
-
             print(filename + " not found...")
-
     else: 
-
         try:
-
-            os.system("python3 " + filename)
-        
+            os.system("python3 " + filename)        
         except FileNotFoundError:
-
             print(filename + " not found...")
-
-    
 
 while True:
 
